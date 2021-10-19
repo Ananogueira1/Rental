@@ -7,5 +7,7 @@ namespace senai_renal_wbAPI.Domains
 {
     public class MarcaDomain
     {
+        public Int16 idMarca { get; set; }
+        public String nomeMarca { get; set; }
     }
 }
