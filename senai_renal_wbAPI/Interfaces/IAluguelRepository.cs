@@ -7,5 +7,7 @@ namespace senai_renal_wbAPI.Interfaces
 {
     interface IAluguelRepository
     {
+
+
     }
 }
