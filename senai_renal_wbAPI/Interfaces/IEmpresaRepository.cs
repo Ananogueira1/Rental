@@ -9,19 +9,39 @@ namespace senai_renal_wbAPI.Interfaces
     interface IEmpresaRepository
     {
 
-        //buscar todas as empresas
+        /// <summary>
+        /// buscar todas as empresas
+        /// </summary>
+        /// <returns></returns>
 
         List<EmpresaDomain> buscarTodasEmpresas();
 
-        //cadastrar todas as empresas 
 
+        /// <summary>
+        /// cadastrar todas as empresas
+        /// </summary>
+        /// <param name="dadosEmpresa"></param>
         void cadastrarEmpresa(EmpresaDomain dadosEmpresa);
 
-        //buscar empresa por id
+        /// <summary>
+        /// buscar empresa por id
+        /// </summary>
+        /// <param name="idEmpresa"></param>
+        /// <returns></returns>
 
         EmpresaDomain buscarEmpresaPorId(int idEmpresa);
 
-        //deletar empresa por id
+        /// <summary>
+        /// atualizar empresa por id
+        /// </summary>
+        /// <param name="idEmpresa">objeto a ser localizado</param>
+        /// <param name="dadosEmpresa">obejto a ser atualizado</param>
+        void atualizarEmpresaPorId(int idEmpresa, EmpresaDomain dadosEmpresa);
+
+        /// <summary>
+        /// deletar empresa por id
+        /// </summary>
+        /// <param name="idEmpresa"></param>
 
         void deletarEmpresaPorId(int idEmpresa);
 

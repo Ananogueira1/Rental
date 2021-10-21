@@ -22,17 +22,13 @@ namespace senai_renal_wbAPI.Repositories
         /// </summary>
         private string stringConexao = "data source=DESKTOP-KF9VIHQ; initial catalog=Empresa_Veiculos; integrated security=true";
 
-        public ClienteDomain buscarPorId(int id)
-        {
-            throw new NotImplementedException();
-        }
 
         public void deletarPorid(int id)
         {
             throw new NotImplementedException();
         }
 
-        public void inserirCliente(ClienteDomain dados)
+        public void cadastrarCliente(ClienteDomain dados)
         {
             throw new NotImplementedException();
         }
@@ -42,65 +38,47 @@ namespace senai_renal_wbAPI.Repositories
             List<ClienteDomain> todosClientes = new List<ClienteDomain>();
 
             //se comunicar com o banco de dados
-            using (SqlConnection con = new SqlConnection
-                (stringConexao))
+            using (SqlConnection con = new SqlConnection(stringConexao))
             {
-
-
                 con.Open();
-
-
 
                 string querySelectAll = "select idCliente, nomeCliente,cpf from cliente";
 
                 using (SqlCommand cmd = new SqlCommand(querySelectAll, con))
                 {
-
                     SqlDataReader leitura = cmd.ExecuteReader();
 
                     while (leitura.Read())
                     {
-
                         ClienteDomain cliente = new ClienteDomain()
                         {
                             idCliente = Convert.ToInt16(leitura[0]),
                             nomeCliente = leitura[1].ToString(),
                             cpf = leitura[2].ToString(),
-
                         };
 
                         //adicionar na lista
                         todosClientes.Add(cliente);
-
-
-
                     }
-                     
-     
-
-
-
-
-
-
-
                 }
-
-
-
-
             }
 
-            // mandar uma instrução para o bd executar
+            // mandar uma instrução para o banco de dados executar
             // ler oq o bd respondeu
-            // adicionar oq veiondo bd na lista "todosClientes"
-
-
-
-
-
+            // adicionar banco de dados na lista "todosClientes"
+            
             // retorna a lista
             return todosClientes;
+        }
+
+        public ClienteDomain buscarClientePorId(int idCliente)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void atualizarClientePorId(int idCliente, ClienteDomain dadosCliente)
+        {
+            throw new NotImplementedException();
         }
     }
 }
