@@ -11,9 +11,18 @@ namespace senai_renal_wbAPI.Repositories
     public class VeiculoRepository : IVeiculoRepository
     {
         private string stringConexao = "data source=DESKTOP - KF9VIHQ; initial catalog = Empresa_Veiculos; integrated security=true";
+        private string dadosVeiculos;
+
         public void atualizarVeiculoPorId(int idVeiculo, VeiculoDomain dadosVeiculo)
         {
-            throw new NotImplementedException();
+            using (SqlConnection con = new SqlConnection(stringConexao))
+            {
+                con.Open();
+               
+                string queryUpdate = @"UPDATE VEICULO
+                SET idEmpresa= '" + dadosVeiculos + "'", idModelo = "'" + dadosVeiculo + "', placa= '" + dadosVeiculo + "'" +
+                " WHERE  idVeiculo = '" + dadosVeiculos + "'";
+            }
         }
 
         public VeiculoDomain buscarVeiculoPorId(int idVeiculo)
@@ -32,10 +41,10 @@ namespace senai_renal_wbAPI.Repositories
                     {
                         VeiculoDomain veiculo = new VeiculoDomain()
                         {
-                          idVeiculo = Convert.ToInt16(leitura[0]),
-                          idEmpresa = Convert.ToInt16(leitura[1]),
-                          idModelo = Convert.ToInt16(leitura[2]),
-                          placa = Convert.ToString(leitura[3])
+                            idVeiculo = Convert.ToInt16(leitura[0]),
+                            idEmpresa = Convert.ToInt16(leitura[1]),
+                            idModelo = Convert.ToInt16(leitura[2]),
+                            placa = Convert.ToString(leitura[3])
                         };
 
                         return veiculo;
@@ -49,7 +58,19 @@ namespace senai_renal_wbAPI.Repositories
 
         public void CadastarVeiculo(VeiculoDomain dadosVeiculo)
         {
-            throw new NotImplementedException();
+
+            using (SqlConnection con = new SqlConnection(stringConexao))
+            {
+
+                con.Open();
+
+                string queryInsert = "INSERT INTO veiculo (idModelo, placa,idEmpresa) values('" + dadosVeiculo.idModelo + "'" + ",'" + dadosVeiculo.placa + "'" + ",'" + dadosVeiculo.idEmpresa + "' )";
+
+                using (SqlCommand cmd = new SqlCommand(queryInsert, con))
+                {
+                    cmd.ExecuteNonQuery();
+                }
+            }
         }
 
         public void deletarVeiculoPorId(int idVeiculo)
