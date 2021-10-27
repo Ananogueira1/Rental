@@ -23,14 +23,42 @@ namespace senai_renal_wbAPI.Repositories
         private string stringConexao = "data source=DESKTOP-KF9VIHQ; initial catalog=Empresa_Veiculos; integrated security=true";
 
 
-        public void deletarPorid(int id)
+        public void deletarPorid(int idCliente)
         {
-            throw new NotImplementedException();
+            using (SqlConnection con = new SqlConnection(stringConexao))
+            {
+                con.Open();
+
+                string queryDelete = "DELETE FROM CLIENTE WHERE idCliente = @idCliente";
+
+                using (SqlCommand cmd = new SqlCommand(queryDelete, con))
+                {
+                    cmd.Parameters.AddWithValue("@idCliente", idCliente);
+
+
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
         }
 
-        public void cadastrarCliente(ClienteDomain dados)
+        public void cadastrarCliente(ClienteDomain dadosCliente)
         {
-            throw new NotImplementedException();
+            using (SqlConnection con = new SqlConnection(stringConexao))
+            {
+                con.Open();
+
+                string queryInsert = "INSERT INTO CLIENTE (nomeCliente, cpf) VALUES (@nomeCliente, @cpf)";
+
+                using (SqlCommand cmd = new SqlCommand(queryInsert, con))
+                {
+                    cmd.Parameters.AddWithValue("@nomeCliente", dadosCliente.nomeCliente);
+                    cmd.Parameters.AddWithValue("@cpf", dadosCliente.cpf);
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
+
         }
 
         public List<ClienteDomain> todosClientes()
@@ -66,19 +94,59 @@ namespace senai_renal_wbAPI.Repositories
             // mandar uma instrução para o banco de dados executar
             // ler oq o bd respondeu
             // adicionar banco de dados na lista "todosClientes"
-            
+
             // retorna a lista
             return todosClientes;
         }
 
         public ClienteDomain buscarClientePorId(int idCliente)
         {
-            throw new NotImplementedException();
+            using (SqlConnection con = new SqlConnection(stringConexao))
+            {
+                con.Open();
+
+                string querySelectAll = "select nomeCliente, cpf from CLIENTE where idCliente= 2";
+                using (SqlCommand cmd = new SqlCommand(querySelectAll, con))
+                {
+
+                    SqlDataReader leitura = cmd.ExecuteReader();
+                    if (leitura.Read())
+                    {
+                        ClienteDomain cliente = new ClienteDomain
+                        {
+                            idCliente = Convert.ToInt16(leitura[0]),
+                            nomeCliente = Convert.ToString(leitura[1]),
+                            cpf = Convert.ToString(leitura[2])
+                        };
+                        return cliente;
+                    }
+                                      
+                }
+                return null;
+            }
+
         }
 
         public void atualizarClientePorId(int idCliente, ClienteDomain dadosCliente)
         {
-            throw new NotImplementedException();
+            using (SqlConnection con = new SqlConnection(stringConexao))
+            {
+                con.Open();
+
+
+                string queryUpdate = "UPDATE CLIENTE SET nomeCliente =" + dadosCliente.nomeCliente + "', cpf= " + dadosCliente.cpf + "WHERE idCliente =" + idCliente;
+                using (SqlCommand cmd = new SqlCommand(queryUpdate, con))
+                {
+                    cmd.Parameters.AddWithValue("idcliente", dadosCliente.idCliente);
+                    cmd.Parameters.AddWithValue("idCliente", dadosCliente.nomeCliente);
+                    cmd.Parameters.AddWithValue("cpf", dadosCliente.cpf);
+
+                    cmd.ExecuteNonQuery();
+
+                }
+        }
         }
     }
+   
 }
+

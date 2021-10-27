@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\DEV\\Desktop\\Rental\\senai_renal_wbAPI\\senai_renal_wbAPI.csproj": {}
+    "C:\\Users\\47546848857\\Desktop\\Rental\\senai_renal_wbAPI\\senai_renal_wbAPI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\DEV\\Desktop\\Rental\\senai_renal_wbAPI\\senai_renal_wbAPI.csproj": {
+    "C:\\Users\\47546848857\\Desktop\\Rental\\senai_renal_wbAPI\\senai_renal_wbAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\DEV\\Desktop\\Rental\\senai_renal_wbAPI\\senai_renal_wbAPI.csproj",
+        "projectUniqueName": "C:\\Users\\47546848857\\Desktop\\Rental\\senai_renal_wbAPI\\senai_renal_wbAPI.csproj",
         "projectName": "senai_renal_wbAPI",
-        "projectPath": "C:\\Users\\DEV\\Desktop\\Rental\\senai_renal_wbAPI\\senai_renal_wbAPI.csproj",
-        "packagesPath": "C:\\Users\\DEV\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\DEV\\Desktop\\Rental\\senai_renal_wbAPI\\obj\\",
+        "projectPath": "C:\\Users\\47546848857\\Desktop\\Rental\\senai_renal_wbAPI\\senai_renal_wbAPI.csproj",
+        "packagesPath": "C:\\Users\\47546848857\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\47546848857\\Desktop\\Rental\\senai_renal_wbAPI\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\DEV\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\47546848857\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -63,7 +63,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.402\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.400\\RuntimeIdentifierGraph.json"
         }
       }
     }

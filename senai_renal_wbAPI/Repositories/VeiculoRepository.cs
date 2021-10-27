@@ -18,10 +18,22 @@ namespace senai_renal_wbAPI.Repositories
             using (SqlConnection con = new SqlConnection(stringConexao))
             {
                 con.Open();
-               
-                string queryUpdate = @"UPDATE VEICULO
-                SET idEmpresa= '" + dadosVeiculos + "'", idModelo = "'" + dadosVeiculo + "', placa= '" + dadosVeiculo + "'" +
-                " WHERE  idVeiculo = '" + dadosVeiculos + "'";
+
+                String queryUpdate = "UPDATE VEICULO SET idEmpresa = '" + dadosVeiculo.idEmpresa + "', idModelo='" + dadosVeiculo.idModelo + "', placa='" + dadosVeiculo.placa +
+                 "' where idVeiculo=" + dadosVeiculo.idVeiculo;
+
+                using (SqlCommand cmd = new SqlCommand(queryUpdate, con))
+                {
+                    cmd.Parameters.AddWithValue("@idModelo", dadosVeiculo.idModelo);
+                    cmd.Parameters.AddWithValue("@idEmpresa", dadosVeiculo.idEmpresa);
+                    cmd.Parameters.AddWithValue("@placa", dadosVeiculo.placa);
+                    cmd.Parameters.AddWithValue("@idVeiculo", dadosVeiculo.idVeiculo);
+
+                    cmd.ExecuteNonQuery();
+
+                }
+
+
             }
         }
 
@@ -31,9 +43,9 @@ namespace senai_renal_wbAPI.Repositories
             {
                 con.Open();
 
-                string querrySelectAll = "select idVeiculo, idEmpresa, idModelo, placa from veiculo where idVeiculo = 3";
+                string querySelectAll = "select idVeiculo, idEmpresa, idModelo, placa from veiculo where idVeiculo = 3";
 
-                using (SqlCommand cmd = new SqlCommand(querrySelectAll, con))
+                using (SqlCommand cmd = new SqlCommand(querySelectAll, con))
                 {
                     SqlDataReader leitura = cmd.ExecuteReader();
 
@@ -64,10 +76,15 @@ namespace senai_renal_wbAPI.Repositories
 
                 con.Open();
 
-                string queryInsert = "INSERT INTO veiculo (idModelo, placa,idEmpresa) values('" + dadosVeiculo.idModelo + "'" + ",'" + dadosVeiculo.placa + "'" + ",'" + dadosVeiculo.idEmpresa + "' )";
+                string queryInsert = "INSERT INTO veiculo (idModelo, placa,idEmpresa) values('idModelo" + dadosVeiculo.idModelo + "'" + ",'placa" + dadosVeiculo.placa + "'" + ",'idEmpresa" + dadosVeiculo.idEmpresa + "' )";
 
                 using (SqlCommand cmd = new SqlCommand(queryInsert, con))
                 {
+                    cmd.Parameters.AddWithValue("@placa", dadosVeiculo.placa);
+                    cmd.Parameters.AddWithValue("@idEmpresa", dadosVeiculo.idEmpresa);
+                    cmd.Parameters.AddWithValue("@idModelo", dadosVeiculo.idModelo);
+
+
                     cmd.ExecuteNonQuery();
                 }
             }
@@ -75,7 +92,18 @@ namespace senai_renal_wbAPI.Repositories
 
         public void deletarVeiculoPorId(int idVeiculo)
         {
-            throw new NotImplementedException();
+            using (SqlConnection con = new SqlConnection(stringConexao))
+            {
+                con.Open();
+
+                string queryDelete = "DELETE FROM VEICULO WHERE idVeiculo = @idVeiculo";
+                using (SqlCommand cmd = new SqlCommand(queryDelete, con))
+                {
+                    cmd.Parameters.AddWithValue("@idVeiculo", idVeiculo);
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
         }
 
         public List<VeiculoDomain> todosOsVeiculos()
