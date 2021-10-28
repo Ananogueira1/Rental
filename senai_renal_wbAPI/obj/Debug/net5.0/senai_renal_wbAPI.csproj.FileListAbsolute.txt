@@ -49,3 +49,12 @@ C:\Users\DEV\Desktop\Rental\senai_renal_wbAPI\obj\Debug\net5.0\senai_renal_wbAPI
 C:\Users\DEV\Desktop\Rental\senai_renal_wbAPI\obj\Debug\net5.0\ref\senai_renal_wbAPI.dll
 C:\Users\DEV\Desktop\Rental\senai_renal_wbAPI\obj\Debug\net5.0\senai_renal_wbAPI.pdb
 C:\Users\DEV\Desktop\Rental\senai_renal_wbAPI\obj\Debug\net5.0\senai_renal_wbAPI.genruntimeconfig.cache
+C:\Users\47546848857\Desktop\Rental\senai_renal_wbAPI\obj\Debug\net5.0\senai_renal_wbAPI.csproj.AssemblyReference.cache
+C:\Users\47546848857\Desktop\Rental\senai_renal_wbAPI\obj\Debug\net5.0\senai_renal_wbAPI.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\47546848857\Desktop\Rental\senai_renal_wbAPI\obj\Debug\net5.0\senai_renal_wbAPI.AssemblyInfoInputs.cache
+C:\Users\47546848857\Desktop\Rental\senai_renal_wbAPI\obj\Debug\net5.0\senai_renal_wbAPI.AssemblyInfo.cs
+C:\Users\47546848857\Desktop\Rental\senai_renal_wbAPI\obj\Debug\net5.0\senai_renal_wbAPI.csproj.CoreCompileInputs.cache
+C:\Users\47546848857\Desktop\Rental\senai_renal_wbAPI\obj\Debug\net5.0\senai_renal_wbAPI.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\47546848857\Desktop\Rental\senai_renal_wbAPI\obj\Debug\net5.0\senai_renal_wbAPI.dll
+C:\Users\47546848857\Desktop\Rental\senai_renal_wbAPI\obj\Debug\net5.0\ref\senai_renal_wbAPI.dll
+C:\Users\47546848857\Desktop\Rental\senai_renal_wbAPI\obj\Debug\net5.0\senai_renal_wbAPI.pdb
