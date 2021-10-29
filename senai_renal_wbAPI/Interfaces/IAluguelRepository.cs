@@ -34,6 +34,7 @@ namespace senai_renal_wbAPI.Interfaces
         /// <param name="idAluguel">objeto as ser localizado</param>
         /// <param name="dadosAluguel">objeto a ser atualizado</param>
         void atualizarAluguelPorId(int idAluguel,AluguelDomain dadosAluguel);
+     
 
         /// <summary>
         /// deletar aluguel por id

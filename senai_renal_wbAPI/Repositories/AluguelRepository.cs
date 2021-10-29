@@ -10,7 +10,7 @@ namespace senai_renal_wbAPI.Repositories
 {
     public class AluguelRepository : IAluguelRepository
     {
-        private string stringConexao = "data source=DESKTOP-KF9VIHQ; initial catalog=Empresa_Veiculos; integrated security=true";
+        private string stringConexao = "data source=NOTE0113G3\\SQLEXPRESS; initial catalog=Empresa_Veiculos; integrated security=true";
 
         public void atualizarAluguelPorId(int idAluguel, AluguelDomain dadosAluguel)
         {
@@ -30,7 +30,7 @@ namespace senai_renal_wbAPI.Repositories
                 }
 
             }
-        }
+        }   
 
         public AluguelDomain buscarAluguelPorId(int idAluguel)
         {
@@ -38,10 +38,12 @@ namespace senai_renal_wbAPI.Repositories
             {
                 con.Open();
 
-                string querySelectAll = "select idAluguel, idVeiculo, idCliente, dataRetirada, dataDevolucao from aluguel= 2";
+                string querySelectAll = "select idAluguel, idVeiculo, idCliente, dataRetirada, dataDevolucao from aluguel where idAluguel= @idAluguel";
 
                 using (SqlCommand cmd = new SqlCommand (querySelectAll, con))
                 {
+                    cmd.Parameters.AddWithValue("@idAluguel", idAluguel);
+
                     SqlDataReader leitura = cmd.ExecuteReader();
 
                     if (leitura.Read())
@@ -57,6 +59,9 @@ namespace senai_renal_wbAPI.Repositories
 
                         return aluguel;
                     }
+
+                    return null;
+                 
                 }
             }
         }
@@ -99,7 +104,38 @@ namespace senai_renal_wbAPI.Repositories
 
         public List<AluguelDomain> todosAlugueis()
         {
-            throw new NotImplementedException();
+            List<AluguelDomain> todosOsAlugueis = new List<AluguelDomain>();
+
+            using (SqlConnection con = new SqlConnection(stringConexao))
+            {
+                con.Open();
+                
+                string querySelectAll = "select idAluguel, idVeiculo, idCliente, dataRetirada, dataDevolucao from aluguel";
+                using (SqlCommand cmd = new SqlCommand(querySelectAll, con))
+                {
+
+                    SqlDataReader leitura = cmd.ExecuteReader();
+
+                    while (leitura.Read())
+                    {
+                        AluguelDomain aluguel = new AluguelDomain()
+                        {
+                            idAluguel = Convert.ToInt16(leitura[0]),
+                            idVeiculo = Convert.ToInt16(leitura[1]),
+                            idCliente = Convert.ToInt16(leitura[2]),
+                            dataRetirada = Convert.ToDateTime(leitura[3]),
+                            dataDevolucao = Convert.ToDateTime(leitura[4])
+                        };
+
+                        //adicionar todos os alugueis na lista 
+                        todosOsAlugueis.Add(aluguel);
+                    }
+
+                }
+
+                return todosOsAlugueis;
+            }
+        
         }
     }
 }

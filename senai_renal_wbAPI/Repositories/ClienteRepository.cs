@@ -20,7 +20,7 @@ namespace senai_renal_wbAPI.Repositories
         /// user id = sa; pdw = senai@132 
         /// integrated security = true
         /// </summary>
-        private string stringConexao = "data source=DESKTOP-KF9VIHQ; initial catalog=Empresa_Veiculos; integrated security=true";
+        private string stringConexao = "data source=NOTE0113G3\\SQLEXPRESS; initial catalog=Empresa_Veiculos; integrated security=true";
 
 
         public void deletarPorid(int idCliente)
@@ -105,7 +105,7 @@ namespace senai_renal_wbAPI.Repositories
             {
                 con.Open();
 
-                string querySelectAll = "select nomeCliente, cpf from CLIENTE where idCliente= 2";
+                string querySelectAll = "select IdCliente, nomeCliente, cpf from CLIENTE where idCliente= 2";
                 using (SqlCommand cmd = new SqlCommand(querySelectAll, con))
                 {
 

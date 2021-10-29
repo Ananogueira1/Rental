@@ -10,7 +10,7 @@ namespace senai_renal_wbAPI.Repositories
 {
     public class VeiculoRepository : IVeiculoRepository
     {
-        private string stringConexao = "data source=DESKTOP - KF9VIHQ; initial catalog = Empresa_Veiculos; integrated security=true";
+        private string stringConexao = "data source=NOTE0113G3\\SQLEXPRESS; initial catalog=Empresa_Veiculos; integrated security=true";
         private string dadosVeiculos;
 
         public void atualizarVeiculoPorId(int idVeiculo, VeiculoDomain dadosVeiculo)
@@ -43,10 +43,12 @@ namespace senai_renal_wbAPI.Repositories
             {
                 con.Open();
 
-                string querySelectAll = "select idVeiculo, idEmpresa, idModelo, placa from veiculo where idVeiculo = 3";
+                string querySelectAll = "select idVeiculo, idEmpresa, idModelo, placa from veiculo where idVeiculo= @idVeiculo";
+                
 
                 using (SqlCommand cmd = new SqlCommand(querySelectAll, con))
                 {
+                    cmd.Parameters.AddWithValue("@idVeiculo", idVeiculo);
                     SqlDataReader leitura = cmd.ExecuteReader();
 
                     if (leitura.Read())
