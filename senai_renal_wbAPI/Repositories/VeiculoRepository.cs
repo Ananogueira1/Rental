@@ -10,7 +10,7 @@ namespace senai_renal_wbAPI.Repositories
 {
     public class VeiculoRepository : IVeiculoRepository
     {
-        private string stringConexao = "data source=NOTE0113G3\\SQLEXPRESS; initial catalog=Empresa_Veiculos; integrated security=true";
+        private string stringConexao = "data source=NOTE0113G1\\SQLEXPRESS; initial catalog=Empresa_Veiculos; integrated security=true";
         private string dadosVeiculos;
 
         public void atualizarVeiculoPorId(int idVeiculo, VeiculoDomain dadosVeiculo)
@@ -78,7 +78,7 @@ namespace senai_renal_wbAPI.Repositories
 
                 con.Open();
 
-                string queryInsert = "INSERT INTO veiculo (idModelo, placa,idEmpresa) values('idModelo" + dadosVeiculo.idModelo + "'" + ",'placa" + dadosVeiculo.placa + "'" + ",'idEmpresa" + dadosVeiculo.idEmpresa + "' )";
+                string queryInsert = "INSERT INTO veiculo (idModelo, placa,idEmpresa) values('" + dadosVeiculo.idModelo + "'" + ",'" + dadosVeiculo.placa + "'" + ",'" + dadosVeiculo.idEmpresa + "' )";
 
                 using (SqlCommand cmd = new SqlCommand(queryInsert, con))
                 {

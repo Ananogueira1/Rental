@@ -41,14 +41,14 @@ namespace senai_renal_wbAPI.Controllers
             return Ok(buscarAluguelPorId);
         }
 
-        //[HttpPost]
-        //public IActionResult Post(AluguelDomain novoAluguel)
-        //{
-        //    _AluguelRepository.atualizarAluguelPorId(novoAluguel);
+       [HttpPost]
+       public IActionResult Post(AluguelDomain novoAluguel)
+        {
+           _AluguelRepository.cadastrarAluguel(novoAluguel);
 
-        //    return Ok("Aluguel cadastrado");
+          return Ok(new {novoAluguel});
 
-        //}
+       }
 
         [HttpPut("{idAluguel}")]
         public IActionResult PutById(int idAluguel, AluguelDomain AluguelAtualizado)

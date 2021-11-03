@@ -20,7 +20,7 @@ namespace senai_renal_wbAPI.Repositories
         /// user id = sa; pdw = senai@132 
         /// integrated security = true
         /// </summary>
-        private string stringConexao = "data source=NOTE0113G3\\SQLEXPRESS; initial catalog=Empresa_Veiculos; integrated security=true";
+        private string stringConexao = "data source=NOTE0113G1\\SQLEXPRESS; initial catalog=Empresa_Veiculos; integrated security=true";
 
 
         public void deletarPorid(int idCliente)
@@ -134,12 +134,12 @@ namespace senai_renal_wbAPI.Repositories
                 con.Open();
 
 
-                string queryUpdate = "UPDATE CLIENTE SET nomeCliente =" + dadosCliente.nomeCliente + "', cpf= " + dadosCliente.cpf + "WHERE idCliente =" + idCliente;
+                string queryUpdate = "UPDATE CLIENTE SET nomeCliente ='" + dadosCliente.nomeCliente + "', cpf= '" + dadosCliente.cpf + "' WHERE idCliente =" + idCliente;
                 using (SqlCommand cmd = new SqlCommand(queryUpdate, con))
                 {
-                    cmd.Parameters.AddWithValue("idcliente", dadosCliente.idCliente);
-                    cmd.Parameters.AddWithValue("idCliente", dadosCliente.nomeCliente);
-                    cmd.Parameters.AddWithValue("cpf", dadosCliente.cpf);
+                    cmd.Parameters.AddWithValue("@idcliente", dadosCliente.idCliente);
+                    cmd.Parameters.AddWithValue("@nomeCliente", dadosCliente.nomeCliente);
+                    cmd.Parameters.AddWithValue("@cpf", dadosCliente.cpf);
 
                     cmd.ExecuteNonQuery();
 

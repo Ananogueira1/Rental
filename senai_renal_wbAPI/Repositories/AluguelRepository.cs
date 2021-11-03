@@ -10,13 +10,14 @@ namespace senai_renal_wbAPI.Repositories
 {
     public class AluguelRepository : IAluguelRepository
     {
-        private string stringConexao = "data source=NOTE0113G3\\SQLEXPRESS; initial catalog=Empresa_Veiculos; integrated security=true";
+        private string stringConexao = "data source=NOTE0113G1\\SQLEXPRESS; initial catalog=Empresa_Veiculos; integrated security=true";
 
         public void atualizarAluguelPorId(int idAluguel, AluguelDomain dadosAluguel)
         {
             using (SqlConnection con = new SqlConnection(stringConexao))
             {
                 con.Open();
+
                 string queryUpdateBody = "UPDATE ALUGUEL SET idVeiculo = @idVeiculo, idCliente = @idCliente, dataRetirada = @dataRetirada, dataDevolucao= @dataDevolucao WHERE idAluguel = @idAluguel";
                 using (SqlCommand cmd = new SqlCommand(queryUpdateBody, con))
                 {
@@ -33,7 +34,7 @@ namespace senai_renal_wbAPI.Repositories
         }   
 
         public AluguelDomain buscarAluguelPorId(int idAluguel)
-        {
+        { 
             using (SqlConnection con = new SqlConnection(stringConexao))
             {
                 con.Open();
@@ -70,7 +71,7 @@ namespace senai_renal_wbAPI.Repositories
         {
             using (SqlConnection con = new SqlConnection(stringConexao))
             {
-                string queryInsert = "INSERT INTO ALUGUEL (idVeiculo, idCliente,dataRetirada,dataDevolucao) VALUES (@idCliente,@idVeiculo,@dataRetirada,@dataDataDevolucao)";
+                string queryInsert = "INSERT INTO ALUGUEL (idVeiculo, idCliente,dataRetirada,dataDevolucao) VALUES (@idCliente,@idVeiculo,@dataRetirada,@dataDevolucao)";
                 con.Open();
 
                 using (SqlCommand cmd = new SqlCommand(queryInsert, con))
